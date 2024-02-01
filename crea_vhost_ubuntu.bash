@@ -52,8 +52,17 @@
     echo -n "# Procedo con l'aggiunta del dominio in /etc/hosts? [s]/n:"
     read CONFIRM
     if [[ ${CONFIRM} = "s" || ${CONFIRM} = "y" || $CONFIRM = "" ]]; then
+
+        echo -n "-Inserisci l'indirizzo ip (default 127.0.0.1): "
+        read INDIRIZZO_IP
+
         echo "~Aggiungo la riga seguente in /etc/hosts e riavvio apache:"
-        echo "127.0.0.1         ${NOME_DOMINIO}" | sudo tee -a /etc/hosts
+        if [[ ${INDIRIZZO_IP} == "" ]]; then
+            echo "127.0.0.1         ${NOME_DOMINIO}" | sudo tee -a /etc/hosts
+        else
+            echo "${INDIRIZZO_IP}         ${NOME_DOMINIO}" | sudo tee -a /etc/hosts
+        fi
+        
         sudo systemctl restart apache2
     fi
 
