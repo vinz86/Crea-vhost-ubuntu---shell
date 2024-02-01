@@ -2,14 +2,6 @@
   echo -n "# Procedo con la creazione di un nuovo vhost? [s]/n: "
   read CONFIRM
   if [[ ${CONFIRM} = "s" || ${CONFIRM} = "y" || $CONFIRM = "" ]]; then
-    # echo "- Inserisci la DOCUMENT_ROOT (senza slash finale) (default /var/www): "
-    # read INPUT_ROOT
-    # if [[ ${INPUT_ROOT} == "" ]]; then
-    #     #DOCUMENT_ROOT= '/var/www'
-    #     DOCUMENT_ROOT= `/var/www`
-    # else
-    #     DOCUMENT_ROOT= INPUT_ROOT
-    # fi
 
     cd '/var/www'
 
@@ -53,7 +45,7 @@
     echo "~Disabilito configurazione di default:"
     sudo a2dissite 000-default.conf
 
-    echo "~Riavvio apache:"
+    echo "~Riavvio apache"
     sudo systemctl restart apache2
 
     echo
