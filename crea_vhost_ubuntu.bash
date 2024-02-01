@@ -52,7 +52,7 @@
     echo -n "# Procedo con l'aggiunta del dominio in /etc/hosts? [s]/n:"
     read CONFIRM
     if [[ ${CONFIRM} = "s" || ${CONFIRM} = "y" || $CONFIRM = "" ]]; then
-        echo "~Aggiungo la riga seguente in /etc/hosts e riavvio apache."
+        echo "~Aggiungo la riga seguente in /etc/hosts e riavvio apache:"
         echo "127.0.0.1         ${NOME_DOMINIO}" | sudo tee -a /etc/hosts
         sudo systemctl restart apache2
     fi
